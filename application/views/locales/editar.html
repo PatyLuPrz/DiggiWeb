@@ -9,28 +9,34 @@ $def with (producto)
                 <p style="font-size:large;">Introduce la información del producto que deseas agregar!</p>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mt-10">
+                        <h5>Nombre</h5>
                         <input type="text" name="Nombre" value="$producto['nombre']" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Nombre'" required class="single-input">
                     </div>
                     <div class="mt-10">
+                        <h5>Marca</h5>
                         <input type="text" name="Marca" value="$producto['marca']" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Marca'" required class="single-input">
                     </div>
                     <div class="mt-10">
+                        <h5>Imagen (funcion en desarrollo)</h5>
                         <input type="" name="Imagen" value="$producto['foto']" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Imagen'" required class="single-input">
                     </div>
 
                     <p style="font-size:medium;">Detalles del producto</p>
                     <div class="mt-10">
+                        <h5>Presentacion del producto</h5>
                         <input type="text" name="Presentacion" value="$producto.get('descripcion').get('presentacion')" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Presentación'" required class="single-input">
                     </div>
                     <div class="mt-10">
+                        <h5>Precio de venta</h5>
                         <input type="number" name="Precio" value="$producto.get('descripcion').get('precio')" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Precio'" required class="single-input">
                     </div>
                     <div class="mt-10">
+                        <h5>Cantidad disponible en almacen</h5> 
                         <input type="text" name="Cant_disponible" value="$producto.get('descripcion').get('cantidad_disponible')" onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Cantidad disponible'" required class="single-input">
                     </div>

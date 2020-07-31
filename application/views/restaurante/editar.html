@@ -9,8 +9,10 @@ $def with (platillo)
                 <p style="font-size:large;">Edita la información que necesites</p>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mt-10">
+                        <h5>Nombre</h5>
                         <input type="text" name="Nombre" value="$platillo['nombre']" required class="single-input">
                     </div>
+                    <h5>Imagen (funcion en desarrollo)</h5>
                     <div class="mt-10">
                         <input type="" name="Imagen" value="defaulg.jpg" value="$platillo['foto']" required class="single-input">
                     </div> 
@@ -18,9 +20,11 @@ $def with (platillo)
                         <textarea name="Descripcion" class="single-textarea" placeholder="$platillo['descripcion']"   required></textarea>
                     </div>
                     <div class="mt-10">
+                        <h5>Tiempo de preparacion</h5>
                         <input type="number" name="Tiempo_preparacion" placeholder="$platillo['tiempo_preparacion']"  required class="single-input">
                     </div>
                     <div class="mt-10">
+                        <h5>Ingredientes extra (Separar por comas)</h5>
                         <input type="text" name="Ingredientes_extra" value="$platillo['ingredientes_extra']"  required class="single-input">
                     </div>
                     <div class="mt-10 center">

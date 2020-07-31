@@ -8,18 +8,22 @@
                 <p style="font-size:large;">Introduce la información del platillo que deseas agregar</p>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mt-10">
+                        <h5>Nombre</h5>
                         <input type="text" name="Nombre" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre'" required class="single-input">
                     </div>
                     <div class="mt-10">
-                        <input type="" name="Imagen" placeholder="Imagen" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Imagen'" required class="single-input">
+                        <h5>Imagen <small>(funcion en desarrollo)</small></h5>
+                        <input type="" name="Imagen" placeholder="Imagen" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Imagen'" required class="single-input" value="default.jpg">
                     </div>
                     <div class="mt-10">
                         <textarea name="Descripcion" class="single-textarea" placeholder="Descripción" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Descripción'" required></textarea>
                     </div>
                     <div class="mt-10">
+                        <h5>Tiempo de preparación</h5>
                         <input type="number" name="Tiempo_preparacion" placeholder="Tiempo de preparación" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tiempo de preparación'" required class="single-input">
                     </div>
                     <div class="mt-10">
+                        <h5>Ingredientes extra (Separar por comas)</h5>
                         <input type="text" name="Ingredientes_extra" placeholder="Ingredientes extra (Separar por comas)" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingredientes extra (Separar por comas)'" required class="single-input">
                     </div>
                     <div class="mt-10 center">
