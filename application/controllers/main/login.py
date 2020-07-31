@@ -2,7 +2,7 @@ import web
 import config
 import app
 from application.models.model_login import verificarUsuarios
-#from firebase_admin import auth
+from application.models.model_success import getUsuario,getLocal,getRestaurante
 render = web.template.render('application/views/main/', base="master.html")
 
 db = config.db
@@ -26,17 +26,19 @@ class Login():
                     if str(item.get("email")) == str(form['email']):
                         print("if")
                         nivel = item.get("nivel")
-                        #user = auth.get_user_by_email(str(form['email']))
-                        #uid = user.uid
+                        
                         if nivel == '0':
                             print("restaurante")
-                            return render.loginSucess("Restaurante",str(form['email']))
+                            cosa = getRestaurante(form['email'])
+                            return render.loginSucess("Restaurante",str(form['email']),cosa)
                         elif nivel == '1':
                             print("negocio")
-                            return render.loginSucess("Negocio",str(form['email']))
+                            cosa = getLocal(form['email'])
+                            return render.loginSucess("Negocio",str(form['email']),cosa)
                         elif nivel == '2':
                             print("cliente")
-                            return render.loginSucess("Cliente",str(form['email']))
+                            cosa = getUsuario(form['email'])
+                            return render.loginSucess("Cliente",str(form['email']),cosa)
                     else:
                         print("no jalo xd")
             else:

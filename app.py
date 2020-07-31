@@ -11,6 +11,7 @@ urls = (
     '/restaurante/(.*)','application.controllers.main.restaurante.Restaurante',
     '/platillo/(.*)','application.controllers.main.view.View',
     '/local/(.*)','application.controllers.main.local.Local',
+    '/login/success/(.*)','application.controllers.main.loginSuccess.LoginSuccess',
     '/usuarios/restaurante','application.controllers.restaurante.index.Index',
     '/usuarios/restaurante/platillos/(.*)','application.controllers.restaurante.platillos.Platillos',
     '/usuarios/restaurante/insertar/(.*)','application.controllers.restaurante.insertar.Insertar',

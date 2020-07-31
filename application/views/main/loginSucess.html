@@ -1,4 +1,4 @@
-$def with(message,email)
+$def with(message,email,cosa)
 
 <!-- start banner Area -->
 
@@ -15,8 +15,13 @@ $def with(message,email)
             <h1>Bienvenido de nuevo! </h1>
             <h4 style="color: aliceblue; text-transform: uppercase;">Tipo de usuario: $message</h4>
             <h4><small style="color: aliceblue;">$email</small></h4>
-            <br><a class="btn btn-danger" href="/login/home/$email">Ir al panel de control</a>
-        </div>
+            $if message == "Restaurante": 
+                <br><a class="btn btn-danger" href="/usuarios/restaurante/platillos/$cosa">Ir al panel de control</a>
+            $elif message == "Negocio":
+                <br><a class="btn btn-danger" href="/usuarios/locales/productos/$cosa">Ir al panel de control</a>
+            $else:
+                <br><a class="btn btn-danger" href="/carrito">Seguir comprando</a>            
+        </div> 
     </div>
 </div>
 </section>

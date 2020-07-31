@@ -1,3 +1,4 @@
+from firebase_admin import firestore
 import web
 import config
 import pyrebase
@@ -22,11 +23,6 @@ def verificarUsuarios(correo, contrasena):
     except Exception as e:
         print("Error login: " + str(e.args))
         return False
-
-
-
-
-
 
 
 
