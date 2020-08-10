@@ -18,7 +18,8 @@ class Clientes():
             direccion = form['Direccion']
             nombre = form['Nombre']
             telefono = form['Telefono']
-            result = model_registro.insertarCliente(nombre,telefono,direccion)
+            email = form['Email']
+            result = model_registro.insertarCliente(nombre,telefono,direccion, email)
             print(result)
             if(result):
                 return render.registroExitoso()
@@ -39,7 +40,8 @@ class Negocios():
             direccion = form['Direccion']
             nombre = form['Nombre']
             telefono = form['Telefono']
-            result = model_registro.insertarNegocio(nombre,telefono,direccion)
+            email = form['Email']
+            result = model_registro.insertarNegocio(nombre,telefono,direccion,email)
             print(result)
             if(result):
                 return render.registroExitoso()
@@ -60,7 +62,8 @@ class Restaurantes():
             direccion = form['Direccion']
             nombre = form['Nombre']
             telefono = form['Telefono']
-            result = model_registro.insertarRestaurante(nombre,telefono,direccion)
+            email = form['Email']
+            result = model_registro.insertarRestaurante(nombre,telefono,direccion,email)
             print(result)
             if(result):
                 return render.registroExitoso()

@@ -11,8 +11,11 @@ def getRestaurante(email):
         docs = restruante_ref.stream()
         for item in docs:
             if item.get('email') == email:
+                print("Id del restaurante")
+                print(item.id)
                 return item.id
             else:
+                print("Email no localizado - Restaurante")
                 return None
     except Exception as e:
         print( "Error restaurantes: " +str(e.args))
@@ -24,8 +27,11 @@ def getLocal(email):
         docs = local_ref.stream()
         for item in docs:
             if item.get('email') == email:
+                print("Id del local")
+                print(item.id)
                 return item.id
             else:
+                print("Email no localizado - Locales")
                 return None
     except Exception as e:
         print( "Error locales: " +str(e.args))
@@ -37,8 +43,11 @@ def getUsuario(email):
         docs = user_ref.stream()
         for item in docs:
             if item.get('email') == email:
+                print("Id del cliente")
+                print(item.id)
                 return item.id
             else:
+                print("Email no localizado - Clientes")
                 return None
     except Exception as e:
         print( "Error usuarios: " +str(e.args))

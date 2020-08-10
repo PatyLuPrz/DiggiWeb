@@ -4,28 +4,30 @@ import firebase_admin
 
 db = config.db
 
-def insertarRestaurante(nombre,telefono,direccion):
+def insertarRestaurante(nombre,telefono,direccion,email):
     try:
         doc_ref = db.collection(u'restaurantes').document() 
         doc_ref.set({
             u'direccion': direccion,
             u'foto': u'default.jpg',
             u'nombre': nombre,
-            u'telefono': telefono
+            u'telefono': telefono,
+            u'email': email
         }) 
         return True
     except Exception as e:
         return False
         return "error model insertar restaurante" + str(e.args)
 
-def insertarNegocio(nombre,telefono,direccion):
+def insertarNegocio(nombre,telefono,direccion, email):
     try:
         doc_ref = db.collection(u'locales').document() 
         doc_ref.set({
             u'direccion': direccion,
             u'foto': u'default.jpg',
             u'nombre': nombre,
-            u'telefono': telefono
+            u'telefono': telefono,
+            u'email': email
         }) 
         return True
     except Exception as e:
@@ -33,14 +35,15 @@ def insertarNegocio(nombre,telefono,direccion):
         return "error model insertar local" + str(e.args)
     
 
-def insertarCliente(nombre,telefono,direccion):
+def insertarCliente(nombre,telefono,direccion,email):
     try:
         doc_ref = db.collection(u'clientes').document() 
         doc_ref.set({
             u'direccion': direccion,
             u'foto': u'default.jpg',
             u'nombre': nombre,
-            u'telefono': telefono
+            u'telefono': telefono,
+            u'email': email
         }) 
         return True
     except Exception as e:
