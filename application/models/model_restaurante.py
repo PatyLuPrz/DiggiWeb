@@ -12,7 +12,9 @@ def viewRestaurantes(udi):
         docs = ref_restaurantes.stream()
         for x in docs:
             if x.id == udi:
-                diccionario = {"nombre":x.get('nombre'),"direccion":x.get('direccion'),"telefono":x.get('telefono')}
+                diccionario = {"nombre":x.get('nombre'),
+                "direccion":x.get('direccion'),
+                "telefono":x.get('telefono')}
                 break
         return diccionario
     except Exception as e:
@@ -25,9 +27,11 @@ def getPlatillos(uid):
         lista = []
         diccionario = {}
         for x in docs:
-            ref = x.get("restaurante").path.split("/",1)
-            if ref[1] == uid:
-                diccionario = {"nombre":x.get("nombre"),"descripcion":x.get("descripcion"),"tiempo_preparacion":x.get("tiempo_preparacion")}
+            ref = x.get("restaurante")
+            if ref == uid:
+                diccionario = {"nombre":x.get("nombre"),
+                "descripcion":x.get("descripcion"),
+                "tiempo_preparacion":x.get("tiempo_preparacion")}
                 lista.append(diccionario)
         return lista
     except Exception as e:
@@ -50,7 +54,7 @@ def insertPlatillo(nombre,descripcion,foto,ingredientes_extra,tiempo_preparacion
             u'descripcion': descripcion,
             u'foto': foto,
             u'ingredientes_extra': ingredientes_extra,
-            u'restaurante':db.collection(u'restaurantes').document(uid),
+            u'restaurante':uid,
             u'tiempo_preparacion':str(tiempo_preparacion)+" min",
         })
         return True
@@ -70,16 +74,18 @@ def update(uid,nombre,descripcion,foto,ingredientes_extra,tiempo_preparacion):
         }) 
         return True
     except Exception as e:
+        print("Error update platillo model restaurante")
         return False
-        return "Error update platillo model restaurante"
+        
 
 def delete(uid):
     try:
         db.collection(u'platillos').document(uid).delete()
         return True
     except Exception as e:
+        print( "Error delete platillo model restaurante")
         return False
-        return "Error delete platillo model restaurante"
+        
 
 def getAllPlatillos(udi):
     try:
@@ -87,9 +93,8 @@ def getAllPlatillos(udi):
         docs = platillos_ref.stream()
         platillos = []
         for x in docs:
-            referencia = str(x.get("restaurante").path)
-            new = referencia.split("/",1)
-            if (udi == str(new[1])):
+            referencia = str(x.get("restaurante"))
+            if (udi == referencia):
                 diccionario = {
                     "id":x.id,
                     "nombre" : x.get("nombre"),
@@ -110,12 +115,11 @@ def getRestaurantesPlatillos():
 
         nombres = []
         for x in docs:
-            referencia = str(x.get("restaurante").path)
-            new = referencia.split("/",1)
-            new_ref = db.collection(str(new[0]))
+            referencia = str(x.get("restaurante"))
+            new_ref = db.collection(u'restaurantes')
             query = new_ref.stream()
             for i in query:
-                if i.id == new[1]:
+                if i.id == referencia:
                     nombres.append(i.get("nombre"))
 
         return nombres

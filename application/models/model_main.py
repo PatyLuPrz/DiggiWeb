@@ -50,12 +50,11 @@ def getRestaurantesPlatillos():
 
         nombres = []
         for x in docs:
-            referencia = str(x.get("restaurante").path)
-            new = referencia.split("/",1)
-            new_ref = db.collection(str(new[0]))
+            uid = x.get("restaurante")
+            new_ref = db.collection(u'restaurantes')
             query = new_ref.stream()
             for i in query:
-                if i.id == new[1]:
+                if i.id == uid:
                     nombres.append(i.get("nombre"))
 
         return nombres
@@ -69,9 +68,8 @@ def getRestaurantesPlatillosID():
         docs = platillos_ref.limit(9).stream()
         rest_id = []
         for x in docs:
-            referencia = str(x.get("restaurante").path)
-            new = referencia.split("/",1)
-            rest_id.append(str(new[1]))
+            referencia = str(x.get("restaurante"))
+            rest_id.append(referencia)
         return rest_id
     except Exception as e:
         return "Error getRestaurantePlatillos ID : " +str(e.args)
