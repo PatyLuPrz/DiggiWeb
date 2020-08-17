@@ -26,6 +26,7 @@ urls = (
     '/usuarios/locales/editar/(.*)','application.controllers.locales.editar.Editar',
     '/usuarios/locales/eliminar/(.*)','application.controllers.locales.eliminar.Eliminar',
     '/carrito','application.controllers.carrito.index.Index',
+    '/pagar','application.controllers.carrito.pagar.Pagar',
 )
 
 app = web.application(urls, globals())
