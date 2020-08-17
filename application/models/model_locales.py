@@ -30,7 +30,7 @@ def viewLocales(udi):
             if x.id == udi:
                 diccionario = {"nombre":x.get('nombre'),
                 "direccion":x.get('direccion'),
-                "telefono":x.get('telefono')}
+                "telefono":x.get('telefono'),"foto":x.get("foto")}
                 break
         return diccionario
         
@@ -48,7 +48,7 @@ def getProductos(uid):
             if ref == uid:
                 diccionario = {"nombre":x.get("nombre"),
                 "descripcion":x.get("descripcion"),
-                "marca":x.get("marca")}
+                "marca":x.get("marca"),"foto":x.get("foto")}
                 lista.append(diccionario)
         return lista
     except Exception as e:
@@ -128,7 +128,7 @@ def getAllProductos(udi):
                     "nombre" : x.get("nombre"),
                     "foto" : x.get("foto"),
                     "marca" : x.get("marca"),
-                    "local" : x.get("local")}
+                    "local" : x.get("local"),"foto":x.get("foto")}
                 productos.append(diccionario)
         return productos
     except Exception as e:

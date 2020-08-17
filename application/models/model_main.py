@@ -14,7 +14,8 @@ def getRestaurantes():
         diccionario = {}
         result  = docs
         for x in result:
-            diccionario = {"id":x.id,"nombre":x.get("nombre"),"direccion":x.get("direccion")}
+            diccionario = {"id":x.id,"nombre":x.get("nombre"),
+            "direccion":x.get("direccion"),"foto":x.get("foto")}
             restaurantes.append(diccionario)
         return restaurantes
     except Exception as e:
@@ -28,7 +29,8 @@ def getLocales():
         diccionario = {}
         result  = docs
         for x in result:
-            diccionario = {"id":x.id,"nombre":x.get("nombre"),"direccion":x.get("direccion")}
+            diccionario = {"id":x.id,"nombre":x.get("nombre"),
+            "direccion":x.get("direccion"),"foto":x.get("foto")}
             locales.append(diccionario)
         return locales
     except Exception as e:

@@ -17,7 +17,11 @@ class Index():
             id_restaurante = model_main.getRestaurantesPlatillosID()
             cont = 0
             for x in result:
-                diccionario = {"uid":x.id,"descripcion":x.get("descripcion"),"nombre":x.get("nombre"),"tiempo_preparacion":x.get("tiempo_preparacion"),"restaurante":nombres[cont],"id_restaurante":id_restaurante[cont],"ingredientes_extra":x.get('ingredientes_extra'),"precio":x.get("precio")}
+                diccionario = {"uid":x.id,"descripcion":x.get("descripcion"),
+                "nombre":x.get("nombre"),"tiempo_preparacion":x.get("tiempo_preparacion"),
+                "restaurante":nombres[cont],"id_restaurante":id_restaurante[cont],
+                "ingredientes_extra":x.get('ingredientes_extra'),"precio":x.get("precio"),
+                "foto":x.get("foto")}
                 platillos.append(diccionario)
                 cont += 1
 

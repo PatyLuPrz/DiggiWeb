@@ -34,7 +34,7 @@ $def with (restaurante,platillos)
             $for item in platillos
                 <div class="single-dish col-lg-4">
                     <div class="thumb">
-                        <img class="img-fluid" src="../static/img/d1.jpg" alt="" style="height: 250px;">
+                        <img class="img-fluid" src="$item['foto']" alt="" style="height: 250px;">
                     </div>
                     <h4 class="text-uppercase pt-20 pb-20">$item["nombre"]</h4>
                     <h6><a href="#" style="color: #CA3F43">$item["tiempo_preparacion"]</a></h6>

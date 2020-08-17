@@ -29,7 +29,7 @@ def viewRestaurantes(udi):
             if x.id == udi:
                 diccionario = {"nombre":x.get('nombre'),
                 "direccion":x.get('direccion'),
-                "telefono":x.get('telefono')}
+                "telefono":x.get('telefono'),"foto":x.get("foto")}
                 break
         return diccionario
     except Exception as e:
@@ -46,7 +46,8 @@ def getPlatillos(uid):
             if ref == uid:
                 diccionario = {"nombre":x.get("nombre"),
                 "descripcion":x.get("descripcion"),
-                "tiempo_preparacion":x.get("tiempo_preparacion")}
+                "tiempo_preparacion":x.get("tiempo_preparacion"),
+                "foto":x.get("foto")}
                 lista.append(diccionario)
         return lista
     except Exception as e:
