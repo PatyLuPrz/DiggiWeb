@@ -7,13 +7,15 @@ class Eliminar():
     def POST(self,uid):
         try:
             model_locales.delete(uid)
-            return "Se ha eliminado el registro"
+            return render.successMesage()
         except Exception as e:
-            return "Error eliminar locales POST Controller" + str(e.args)
+            print( "Error eliminar locales POST Controller" + str(e.args))
+            return render.failMesage()
 
     def GET(self,uid):
         try:
             producto = model_locales.getProductoByID(uid)
             return render.eliminar(producto)
         except Exception as e:
-            return "Error eliminar locales GET controller: " +str(e.args)
+            print("Error eliminar locales GET controller: " +str(e.args))
+            return render.failMesage()

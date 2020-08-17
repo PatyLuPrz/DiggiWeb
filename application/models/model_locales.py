@@ -1,9 +1,25 @@
+from application.models.model_restaurante import updateWithoutImage
 import web
 import config 
 import firebase_admin
 from firebase_admin import firestore
+import cloudinary.uploader
 
 db = config.db
+
+cloudinary.config( 
+  cloud_name = "patyluprz", 
+  api_key = "448467956332495", 
+  api_secret = "iovK969N-ZReTDBMukFZp8JKrq0" 
+)
+
+def insertImage(image):
+    try:
+        result = cloudinary.uploader.upload(image)
+        return result['secure_url']
+    except Exception as e:
+        print("error insertImage: " +str(e.args))
+        return False
 
 
 def viewLocales(udi):
@@ -28,8 +44,8 @@ def getProductos(uid):
         lista = []
         diccionario = {}
         for x in docs:
-            ref = x.get("local").path.split("/",1)
-            if ref[1] == uid:
+            ref = x.get("local")
+            if ref == uid:
                 diccionario = {"nombre":x.get("nombre"),
                 "descripcion":x.get("descripcion"),
                 "marca":x.get("marca")}
@@ -59,9 +75,8 @@ def insertProducto(nombre,marca,foto,descripcion,uid):
         })
         return True
     except Exception as e:
+        print("Error insert producto model local" + str(e.args))
         return False
-        return "Error insert producto model local" + str(e.args)
-
 
 def update(nombre,marca,imagen,descripcion,uid):
     try:
@@ -74,15 +89,30 @@ def update(nombre,marca,imagen,descripcion,uid):
         }) 
         return True
     except Exception as e:
+        print( "Error update producto model local" + str(e.args))
         return False
-        return "Error update producto model local" + str(e.args)
+        
+
+def updateWithoutImage(nombre,marca,descripcion,uid):
+    try:
+        doc_ref = db.collection(u'productos').document(uid) 
+        doc_ref.update({
+            u'nombre': nombre,
+            u'marca': marca,
+            u'descripcion': descripcion,
+        }) 
+        return True
+    except Exception as e:
+        print( "Error update producto model local" + str(e.args))
+        return False
+
 
 def delete(uid):
     try:
         db.collection(u'productos').document(uid).delete()
         return True
     except Exception as e:
-        return "Error delete producto model local" + str(e.args)
+        print("Error delete producto model local" + str(e.args))
         return False
 
 def getAllProductos(udi):
@@ -91,9 +121,8 @@ def getAllProductos(udi):
         docs = productos_ref.stream()
         productos = []
         for x in docs:
-            referencia = str(x.get("local").path)
-            new = referencia.split("/",1)
-            if (udi == str(new[1])):
+            referencia = str(x.get("local"))
+            if (udi == referencia):
                 diccionario = {
                     "id" : x.id,
                     "nombre" : x.get("nombre"),
@@ -112,12 +141,11 @@ def getLocalesProductos():
 
         nombres = []
         for x in docs:
-            referencia = str(x.get("local").path)
-            new = referencia.split("/",1)
-            new_ref = db.collection(str(new[0]))
+            referencia = str(x.get("local"))
+            new_ref = db.collection(u'locales')
             query = new_ref.stream()
             for i in query:
-                if i.id == new[1]:
+                if i.id == referencia:
                     nombres.append(i.get("nombre"))
 
         return nombres
