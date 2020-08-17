@@ -1,33 +1,38 @@
 $def with (platillo)
 <!-- start banner Area -->
 <section class="generic-banner relative" id="">
-    <img class="img-tam relative" src="../../../static/img/form-bg.jpg" alt="">
+    <img class="img-tam relative" src="../../../static/img/dark-bg.jpeg" alt="">
     <div class="container">
         <div class="row d-flex justify-content-start">
             <div class="generic-content text-over relative"><br>
                 <h3 class="text-white">Editar Platillo</h3>
                 <p style="font-size:large;">Edita la información que necesites</p>
                 <form action="" method="POST" enctype="multipart/form-data">
-                    <div class="mt-10">
-                        <h5>Nombre</h5>
+                    <div class="mt-12">
+                        <h5 style="color:aliceblue;">Nombre</h5>
                         <input type="text" name="Nombre" value="$platillo['nombre']" required class="single-input">
                     </div>
-                    <h5>Imagen (funcion en desarrollo)</h5>
-                    <div class="mt-10">
-                        <input type="" name="Imagen" value="defaulg.jpg" value="$platillo['foto']" required class="single-input">
+                    <h5 style="color:aliceblue;">Imagen (Dejar vacio si no se desea editar)</h5> 
+                    <div class="mt-12">
+                        <center>
+                            <br><img width="85 px" src="$platillo['foto']">
+                            <h5 ><small style="color:aliceblue;">Imagen actual</small></h5>
+                        </center>
+                        <input type="file" name="Imagen" class="single-input">
                     </div> 
-                    <div class="mt-10">
+                    <h5 style="color:aliceblue;">Descripción del platillo</h5> 
+                    <div class="mt-12">
                         <textarea name="Descripcion" class="single-textarea" placeholder="$platillo['descripcion']"   required></textarea>
                     </div>
-                    <div class="mt-10">
-                        <h5>Tiempo de preparacion</h5>
+                    <div class="mt-12">
+                        <h5 style="color:aliceblue;">Tiempo de preparación aprox. en minutos</h5>
                         <input type="number" name="Tiempo_preparacion" placeholder="$platillo['tiempo_preparacion']"  required class="single-input">
                     </div>
-                    <div class="mt-10">
-                        <h5>Ingredientes extra (Separar por comas)</h5>
+                    <div class="mt-12">
+                        <h5 style="color:aliceblue;">Ingredientes extra (Separar por comas)</h5>
                         <input type="text" name="Ingredientes_extra" value="$platillo['ingredientes_extra']"  required class="single-input">
                     </div>
-                    <div class="mt-10 center">
+                    <div class="mt-12 center">
                         <button class="genric-btn primary radius">Enviar</button>
                     </div>
                 </form><br>

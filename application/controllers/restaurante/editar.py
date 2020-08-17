@@ -7,12 +7,16 @@ class Editar():
     def POST(self,uid):
         try:
             form = web.input()
-            imagen = model_restaurante.insertImage(form['Imagen'])
-            edit = model_restaurante.update(uid,form['Nombre'],form['Descripcion'],imagen,form['Ingredientes_extra'],form['Tiempo_preparacion'])
-            if(edit):
-                return "todo bien"
+            if form['Imagen']:
+                imagen = model_restaurante.insertImage(form['Imagen'])
+                edit = model_restaurante.update(uid,form['Nombre'],form['Descripcion'],imagen,form['Ingredientes_extra'],form['Tiempo_preparacion'])
             else:
-                return "algo sucedio y no se logro el update, intentalo de nuevo"
+                edit = model_restaurante.updateWithoutImage(uid,form['Nombre'],form['Descripcion'],form['Ingredientes_extra'],form['Tiempo_preparacion'])            
+            
+            if(edit):
+                return render.successMessage()
+            else:
+                return render.failMessage()
         except Exception as e:
             return "Error editar restaurante POST Controller" + str(e.args)
 

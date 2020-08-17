@@ -6,13 +6,15 @@ $def with (platillo)
         <div class="row d-flex justify-content-start">
             <div class="generic-content text-over relative"><br>
                 <h3 class="text-white">Borrar Platillo</h3>
-                <p style="font-size:large;">
+                <p style="font-size:large; color: aliceblue;">
                     ¿Estas seguro que deseas borrarlo? <br>
                     <small>Esta acción es para siempre, y eso es mucho tiempo</small>
                 </p>
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="mt-10">
-                        <h1>$platillo['nombre']</h1>
+                        <br><img width="250 px" src="$platillo['foto']"> 
+                        <h1 style="color: aliceblue;">$platillo['nombre']</h1>
+                         
                     </div>
                     <div class="mt-10 center">
                         <button class="genric-btn primary radius">Borrar</button>

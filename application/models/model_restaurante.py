@@ -92,6 +92,20 @@ def update(uid,nombre,descripcion,foto,ingredientes_extra,tiempo_preparacion):
         print("Error update platillo model restaurante")
         return False
         
+def updateWithoutImage(uid,nombre,descripcion,ingredientes_extra,tiempo_preparacion):
+    try:
+        doc_ref = db.collection(u'platillos').document(uid) 
+        doc_ref.update({
+            u'nombre': nombre,
+            u'descripcion': descripcion,
+            u'ingredientes_extra': ingredientes_extra,
+            u'tiempo_preparacion':str(tiempo_preparacion)+" min",
+        }) 
+        return True
+    except Exception as e:
+        print("Error update platillo model restaurante")
+        return False
+        
 
 def delete(uid):
     try:

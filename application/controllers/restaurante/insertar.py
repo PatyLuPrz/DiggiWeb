@@ -11,9 +11,10 @@ class Insertar():
             insert = model_restaurante.insertPlatillo(form['Nombre'],form['Descripcion'],imagen,
             form['Ingredientes_extra'].split(","),form['Tiempo_preparacion'],uid)
             if(insert):
-                return "Registro insertado"
+                return render.successMessage()
+
             else:
-                return "Algo salio mal"
+                return render.failMessage()
         except Exception as e:
             return "Error insertar restaurante POST Controller" + str(e.args)
 

@@ -7,7 +7,7 @@ class Eliminar():
     def POST(self,uid):
         try:
             model_restaurante.delete(uid)
-            return "Se ha eliminado el registro"
+            return render.successMessage()
         except Exception as e:
             return "Error eliminar restaurante POST Controller" + str(e.args)
 
