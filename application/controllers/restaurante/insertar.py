@@ -7,7 +7,8 @@ class Insertar():
     def POST(self,uid):
         try:
             form = web.input()
-            insert = model_restaurante.insertPlatillo(form['Nombre'],form['Descripcion'],form['Imagen'],
+            imagen = model_restaurante.insertImage(form['Imagen'])
+            insert = model_restaurante.insertPlatillo(form['Nombre'],form['Descripcion'],imagen,
             form['Ingredientes_extra'].split(","),form['Tiempo_preparacion'],uid)
             if(insert):
                 return "Registro insertado"

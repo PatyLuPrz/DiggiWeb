@@ -7,8 +7,8 @@ class Editar():
     def POST(self,uid):
         try:
             form = web.input()
-
-            edit = model_restaurante.update(uid,form['Nombre'],form['Descripcion'],form['Imagen'],form['Ingredientes_extra'],form['Tiempo_preparacion'])
+            imagen = model_restaurante.insertImage(form['Imagen'])
+            edit = model_restaurante.update(uid,form['Nombre'],form['Descripcion'],imagen,form['Ingredientes_extra'],form['Tiempo_preparacion'])
             if(edit):
                 return "todo bien"
             else:

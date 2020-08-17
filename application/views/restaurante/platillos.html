@@ -24,7 +24,7 @@ $def with (platillos,uid)
             $for item in platillos:
                 <div class="single-dish col-lg-4">
                     <div class="thumb">
-                        <img class="img-fluid" src="../../../static/img/d1.jpg" alt="" style="height: 250px;">
+                        <img class="img-fluid" src="$item['foto']" alt="" style="height: 250px;">
                     </div>
                     <h4 class="text-uppercase pt-20 pb-20">$item["nombre"]</h4>
                     <a href="/usuarios/restaurante/editar/$item['id']" class="btn btn-outline btn-danger">

@@ -2,8 +2,23 @@ import web
 import config 
 import firebase_admin
 from firebase_admin import firestore
+import cloudinary.uploader
 
 db = config.db
+
+cloudinary.config( 
+  cloud_name = "patyluprz", 
+  api_key = "448467956332495", 
+  api_secret = "iovK969N-ZReTDBMukFZp8JKrq0" 
+)
+
+def insertImage(image):
+    try:
+        result = cloudinary.uploader.upload(image)
+        return result['secure_url']
+    except Exception as e:
+        print("error insertImage: " +str(e.args))
+        return False
 
 
 def viewRestaurantes(udi):
