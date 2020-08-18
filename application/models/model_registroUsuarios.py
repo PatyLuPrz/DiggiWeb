@@ -20,7 +20,7 @@ def insertFoto(image):
         return False
 
 
-def insertarRestaurante(nombre,telefono,direccion,email,foto):
+def insertarRestaurante(nombre,telefono,direccion,email,foto,latitud,longitud):
     try:
         doc_ref = db.collection(u'restaurantes').document() 
         doc_ref.set({
@@ -29,7 +29,9 @@ def insertarRestaurante(nombre,telefono,direccion,email,foto):
             u'nombre': nombre,
             u'telefono': telefono,
             u'email': email,
-            u'foto':foto
+            u'foto':foto,
+            u'latitud':latitud,
+            u'longitud':longitud
         }) 
         return True
     except Exception as e:
@@ -37,7 +39,7 @@ def insertarRestaurante(nombre,telefono,direccion,email,foto):
         return False
         
 
-def insertarNegocio(nombre,telefono,direccion,email,foto):
+def insertarNegocio(nombre,telefono,direccion,email,foto,latitud,longitud):
     try:
         doc_ref = db.collection(u'locales').document() 
         doc_ref.set({
@@ -46,7 +48,9 @@ def insertarNegocio(nombre,telefono,direccion,email,foto):
             u'nombre': nombre,
             u'telefono': telefono,
             u'email': email,
-            u'foto':foto
+            u'foto':foto,
+            u'latitud':latitud,
+            u'longitud':longitud
         }) 
         return True
     except Exception as e:

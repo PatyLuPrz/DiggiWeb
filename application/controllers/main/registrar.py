@@ -40,6 +40,8 @@ class Negocios():
     def POST(self):
         try:
             form = web.input()
+            latitud = form['Latitud_L']
+            longitud = form['Longitud_L']
             direccion = form['Direccion']
             nombre = form['Nombre']
             telefono = form['Telefono']
@@ -47,7 +49,7 @@ class Negocios():
             foto = form['Foto']
             result_foto = model_registro.insertFoto(foto)
             model.insertUsuario(email,"1")
-            result = model_registro.insertarNegocio(nombre,telefono,direccion,email,result_foto)
+            result = model_registro.insertarNegocio(nombre,telefono,direccion,email,result_foto,latitud,longitud)
             print(result)
             if(result):
                 return render.registroExitoso()
@@ -65,6 +67,8 @@ class Restaurantes():
     def POST(self):
         try:
             form = web.input()
+            latitud = form['Latitud_L']
+            longitud = form['Longitud_L']
             direccion = form['Direccion']
             nombre = form['Nombre']
             telefono = form['Telefono']
@@ -72,7 +76,7 @@ class Restaurantes():
             foto = form['Foto']
             result_foto = model_registro.insertFoto(foto)
             model.insertUsuario(email,"0")
-            result = model_registro.insertarRestaurante(nombre,telefono,direccion,email,result_foto)
+            result = model_registro.insertarRestaurante(nombre,telefono,direccion,email,result_foto,latitud,longitud)
             print(result)
             if(result):
                 return render.registroExitoso()
