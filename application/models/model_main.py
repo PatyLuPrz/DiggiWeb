@@ -79,10 +79,44 @@ def getRestaurantesPlatillosID():
 def getProductos():
     try:
         productos_ref = db.collection(u'productos')
-        docs = productos_ref.stream()
+        docs = productos_ref.limit(9).stream()
         return docs
     except Exception as e:
         return "Error getProductos " + str(e.args)
+
+
+def getLocalesProductos():
+    try:
+        productos_ref = db.collection(u'productos')
+        docs = productos_ref.limit(9).stream()
+
+        nombres = []
+        for x in docs:
+            uid = x.get("local")
+            new_ref = db.collection(u'locales')
+            query = new_ref.stream()
+            for i in query:
+                if i.id == uid:
+                    nombres.append(i.get("nombre"))
+
+        return nombres
+    except Exception as e:
+        return "Error getLocalesProductos " +str(e.args)
+
+
+def getLocalesProductosID():
+    try:
+        productos_ref = db.collection(u'productos')
+        docs = productos_ref.limit(9).stream()
+        rest_id = []
+        for x in docs:
+            referencia = str(x.get("local"))
+            rest_id.append(referencia)
+        return rest_id
+    except Exception as e:
+        return "Error getLocalProductos ID : " +str(e.args)
+
+
 
 def busqueda(palabra_clave):
     try:

@@ -25,7 +25,24 @@ class Index():
                 platillos.append(diccionario)
                 cont += 1
 
-            return render.index(restaurantes,locales,platillos)
+
+            productos = []
+            diccionario_p = {}
+            result_p = model_main.getProductos()
+            nombres_p = model_main.getLocalesProductos()
+            id_local = model_main.getLocalesProductosID()
+
+            cont = 0
+            for x in result_p:
+                diccionario_p = {
+                    "uid":x.id,"descripcion":x.get('descripcion'),
+                    "nombre":x.get("nombre"),"id_local":id_local[cont],"local":nombres_p[cont],
+                    "marca":x.get("marca"),"foto":x.get("foto")
+                }
+                productos.append(diccionario_p)
+                cont += 1
+
+            return render.index(restaurantes,locales,platillos,productos)
         except Exception as e:
             return "Error Index Controller" + str(e.args) 
 

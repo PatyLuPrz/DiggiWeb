@@ -1,4 +1,4 @@
-$def with (restaurantes,locales,platillos)
+$def with (restaurantes,locales,platillos,productos)
 <!-- start banner Area -->
 <section class="banner-area relative generic-banner img-gb" id="home">
     <div class="container">
@@ -26,13 +26,82 @@ $def with (restaurantes,locales,platillos)
                     <div class="title text-center">
                         <h1 class="mb-10">Busca lo que necesitas</h1>
                         <p>Restaurantes, platillos, productos o algun negocio.. Seguro que tenemos lo que buscas</p>
-                        <input type="text" name="busqueda" class="search-query form-control ml-5" placeholder="Buscar" /> <br>
+                        <input type="text" name="busqueda" class="search-query form-control ml-5" placeholder="Buscar" />
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </form>
+
+<section class="top-dish-area section-gap" id="dish">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Productos populares</h1>
+                    <p>Algunos productos que fuerón seleccionados por nuestros usuarios</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            $for item in productos
+                <div class="single-dish col-lg-4">
+                    <div class="thumb">
+                        <img class="img-fluid" src="$item['foto']" alt="" style="height: 250px;">
+                    </div>
+                    <h4 class="text-uppercase pt-20 pb-20">$item["nombre"]</h4>
+                    <h6><a href="/local/$item['id_local']" style="color: #CA3F43">$item["local"]</a></h6>
+                    <p>
+                        $item['descripcion'].get('precio') .00 MXN
+                    </p>
+                    <br>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#$item['uid']">Agregar a la
+                        orden</button><br><br>
+                </div>
+                <br>
+        </div>
+    </div>
+</section>
+<!-- End top-dish Area -->
+
+<!-- Start related Area -->
+<section class="related-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-8">
+                <div class="title text-center">
+                    <h1 class="mb-10">Platillos populares</h1>
+                    <p>De la selección especial de nuestros clientes hasta ti en un solo clic</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="active-realated-carusel">
+                $for item in platillos
+                    <div class="item row align-items-center">
+                        <div class="col-lg-6 rel-left">
+                            <h3>
+                                $item['nombre']
+                            </h3>
+                            <p class="pt-30 pb-30">
+                                <h4 class="text-uppercase pt-20 pb-20">$item["descripcion"]</h4>
+                                <h6><a href="/restaurante/$item['id_restaurante']" style="color: #CA3F43">
+                                    $item["restaurante"]</a></h6>
+                            </p>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#$item['uid']">Agregar a la orden </button>
+                        </div>
+                        <div class="col-lg-6">
+                            <img class="img-fluid" src="$item['foto']" alt="">
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End related Area -->
 
 <!-- Start top-dish Area -->
 <section class="top-dish-area section-gap" id="dish">
@@ -49,7 +118,7 @@ $def with (restaurantes,locales,platillos)
             $for item in restaurantes
                 <div class="single-dish col-lg-4">
                     <div class="thumb">
-                        <img class="img-fluid" src="static/img/d1.jpg" alt="" style="height: 250px;">
+                        <img class="img-fluid" src="$item['foto']" alt="" style="height: 250px;">
                     </div>
                     <h4 class="text-uppercase pt-20 pb-20">$item["nombre"]</h4>
                     <p>
@@ -60,7 +129,7 @@ $def with (restaurantes,locales,platillos)
             $for item in locales
                 <div class="single-dish col-lg-4">
                     <div class="thumb">
-                        <img class="img-fluid" src="static/img/d1.jpg" alt="" style="height: 250px;">
+                        <img class="img-fluid" src="$item['foto']" alt="" style="height: 250px;">
                     </div>
                     <h4 class="text-uppercase pt-20 pb-20">$item["nombre"]</h4>
                     <p>
@@ -74,37 +143,7 @@ $def with (restaurantes,locales,platillos)
 <!-- End top-dish Area -->
 
 
-<!-- Start top-dish Area -->
-<section class="top-dish-area section-gap" id="dish">
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="menu-content pb-60 col-lg-8">
-                <div class="title text-center">
-                    <h1 class="mb-10">Platillos populares</h1>
-                    <p>Algunos platillos que fuerón seleccionados por nuestros usuarios</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="row">
-            $for item in platillos
-                <div class="single-dish col-lg-4">
-                    <div class="thumb">
-                        <img class="img-fluid" src="static/img/d1.jpg" alt="" style="height: 250px;">
-                    </div>
-                    <h4 class="text-uppercase pt-20 pb-20">$item["nombre"]</h4>
-                    <h6><a href="/restaurante/$item['id_restaurante']" style="color: #CA3F43">$item["restaurante"]</a></h6>
-                    <p>
-                        $item["descripcion"]
-                    </p>
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#$item['uid']">Agregar a la
-                        orden</button><br><br>
-                </div>
-                
-        </div>
-    </div>
-</section>
-<!-- End top-dish Area -->
+
 
 
 
@@ -121,7 +160,7 @@ $for item in platillos
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img src="static/img/modal.jpg" class="img-fluid" alt="Responsive image">
+                    <img src="$item['foto']" class="img-fluid" alt="Responsive image">
                     <form>
                         <h1>$item['nombre']</h1>       <h6>Precio: $item['precio'].00 MXN</h6>
                         <p>$item['descripcion']</p>
@@ -139,3 +178,7 @@ $for item in platillos
     </div>
 
 <input name="orden_array" type="hidden" value="" id="orden_array">
+
+
+
+
