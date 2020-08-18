@@ -42,7 +42,7 @@ class Login():
                     else:
                         print("no jalo xd")
             else:
-                return "algo salio mal :(" 
+                return render.errorLogin() 
         except Exception as e:
             return "Error RegistroPost Controller" + str(e.args)
 

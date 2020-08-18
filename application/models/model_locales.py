@@ -71,7 +71,7 @@ def insertProducto(nombre,marca,foto,descripcion,uid):
             u'foto': foto,
             u'marca': marca,
             u'descripcion': descripcion,
-            u'local':db.collection(u'locales').document(uid),
+            u'local':uid,
         })
         return True
     except Exception as e:

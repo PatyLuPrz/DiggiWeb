@@ -19,12 +19,12 @@ class Editar():
                 insert = model_locales.updateWithoutImage(nombre,marca,descripcion,uid)
 
             if(insert):
-                return render.successMesage()
+                return render.successMessage()
             else:
-                return render.failMesage()
+                return render.failMessage()
         except Exception as e:
             print("Error editar locales POST Controller" + str(e.args))
-            return render.failMesage()
+            return render.failMessage()
 
     def GET(self,uid):
         try:
@@ -34,4 +34,4 @@ class Editar():
             return render.editar(producto)
         except Exception as e:
             print("Error editar locales GET controller: " +str(e.args))
-            return render.failMesage()
+            return render.failMessage()

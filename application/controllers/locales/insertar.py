@@ -13,16 +13,16 @@ class Insertar():
             imagen = model_locales.insertImage(form['Imagen'])
             insert = model_locales.insertProducto(nombre,marca,imagen,descripcion,uid)
             if(insert):
-                return render.successMesage()
+                return render.successMessage()
             else:
-                return render.failMesage()
+                return render.failMessage()
         except Exception as e:
             print("Error insertar locales POST Controller" + str(e.args))
-            return render.failMesage()
+            return render.failMessage()
 
     def GET(self,uid):
         try:
             return render.insertar()
         except Exception as e:
             print("Error insertar locales GET controller: " +str(e.args))
-            return render.failMesage()
+            return render.failMessage()
