@@ -19,8 +19,10 @@ class Clientes():
             nombre = form['Nombre']
             telefono = form['Telefono']
             email = form['Email']
+            foto = form['Foto']
+            result_foto = model_registro.insertFoto(foto)
             model.insertUsuario(email,"2")
-            result = model_registro.insertarCliente(nombre,telefono,direccion, email)
+            result = model_registro.insertarCliente(nombre,telefono,direccion,email,result_foto)
             print(result)
             if(result):
                 return render.registroExitoso()
@@ -42,8 +44,10 @@ class Negocios():
             nombre = form['Nombre']
             telefono = form['Telefono']
             email = form['Email']
+            foto = form['Foto']
+            result_foto = model_registro.insertFoto(foto)
             model.insertUsuario(email,"1")
-            result = model_registro.insertarNegocio(nombre,telefono,direccion,email)
+            result = model_registro.insertarNegocio(nombre,telefono,direccion,email,result_foto)
             print(result)
             if(result):
                 return render.registroExitoso()
@@ -65,8 +69,10 @@ class Restaurantes():
             nombre = form['Nombre']
             telefono = form['Telefono']
             email = form['Email']
+            foto = form['Foto']
+            result_foto = model_registro.insertFoto(foto)
             model.insertUsuario(email,"0")
-            result = model_registro.insertarRestaurante(nombre,telefono,direccion,email)
+            result = model_registro.insertarRestaurante(nombre,telefono,direccion,email,result_foto)
             print(result)
             if(result):
                 return render.registroExitoso()
