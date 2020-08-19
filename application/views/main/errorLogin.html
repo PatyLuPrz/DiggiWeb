@@ -1,0 +1,57 @@
+$def with (codigo)
+<style>
+    .one {
+        background-color: #C93F42;  
+        position: absolute; 
+        width: 35%;
+        height: 550px;
+        left: 10px; 
+        top: 25px; 
+        z-index: 1;
+        border-radius: 3px;
+    }
+    .two {
+        background-color: #000000; 
+        width: 64%; 
+        height: 550px;
+        position: absolute; 
+        left: 35%; 
+        top: 25px; 
+        z-index: 2;
+        border-radius: 2px;
+    }
+    .tree {
+        background-color: #FFFFFF; 
+        width: 50%; 
+        height: 450px;
+        position: absolute; 
+        left: 25%; 
+        top: 100px; 
+        z-index: 3;
+        border-radius: 3px;
+        text-align: center; 
+    }
+    .img_e {
+        width: 70%; 
+        height: 300px;
+    }
+</style>
+
+<div class="container">
+
+    <div style="position: relative;">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="tree">
+            <img class="img_e" src="../../static/img/error.gif">
+            <h4>Upps, algo salio mal!</h4>
+            <p>No eres tú, somos nosotros. Pero no te preocupes, tenemos un equipo de desarrollo trabajando para resolverlo, intenta volver después.</p>
+                <small>Error: $codigo</small> <br><br>
+            <button type="button" class="btn btn-danger" onclick="window.history.go(-1);">Regresar</button>
+        </div>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
+<!-- End banner Area -->

@@ -22,7 +22,7 @@ def verificarUsuarios(correo, contrasena):
         return True
     except Exception as e:
         print("Error login: " + str(e.args))
-        return False
+        return "Correo o contraseña incorrectos, verifica de nuevo"
 
 
 

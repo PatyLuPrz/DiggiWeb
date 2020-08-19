@@ -18,7 +18,7 @@ class Login():
         try:
             form = web.input()
             result = verificarUsuarios(form['email'],form['contrasena'])
-            if result:
+            if result == True:
                 ref_niveles = db.collection(u'usuarios')
                 docs = ref_niveles.stream()
                 for item in docs:
@@ -42,9 +42,10 @@ class Login():
                     else:
                         print("no jalo xd")
             else:
-                return render.errorLogin() 
+                return render.errorLogin(result) 
         except Exception as e:
-            return "Error RegistroPost Controller" + str(e.args)
+            print("Error RegistroPost Controller" + str(e.args))
+            return render.errorLogin(str(e.args))
 
 
 
